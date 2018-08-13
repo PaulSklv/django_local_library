@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+{% block title %}
+<title>
+	Домашняя Библиотека Павла Соколова
+</title>
+{% endblock %}
+{% block content %}
+<h1>Главная страница Домашней Бибилиотеки Павла Соколова</h1>
+	<p>Добро пожаловать в <em>Домашнюю Библиотеку</em></p>
+<h2>Динамический контент</h2>
+	
+	<p>Библиотека содержит следующие записи:</p>
+	<ul>
+		<li><strong>Книги: </strong>{{ num_books }}</li>
+		<li><strong>Экземпляры: </strong>{{ num_instances }}</li>
+		<li><strong>Доступные копии: </strong>{{ num_instances_available }}</li>
+		<li><strong>Авторы: </strong>{{ num_authors }}</li>
+		<li><strong>Книг в жанре "Роман": </strong>{{ num_novels_books }}</li>
+		<li><strong>Книги, содержащие слово "Merchant": </strong>{{ num_merchant_books }}</li>
+
+	</ul>
+	<p>Вы посетили эту страницу {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
+{% endblock %}

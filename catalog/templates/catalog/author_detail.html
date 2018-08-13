@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+	<h1>Краткая информация об авторе: {{ book.title }}</h1>
+
+    <h3><i>{{ author.full_name }}</i></h3>
+    <h6><a href="{% url 'author_update' author.pk %}">Редактировать запись об авторе</a></h6>
+    <h6><a href="{% url 'author_delete' author.pk %}">Удалить запись об авторе</a></h6>
+    <p><strong>Дата рождения: </strong> {{ author.date_of_birth }}</p> 
+    <p><strong>Дата смерти: </strong> {{ author.date_of_death }}</p>  
+    
+    <div style='margin-left:20px;margin-top:20px'>
+        <h4>Доступные работы в библиотеке:</h4>
+        <dl>
+            {% for works in author.book_set.all %}
+            <dt><a href="{% url 'book-detail' works.pk %}">{{ works }}</a></dl>
+            <dd><strong>Краткое описание: </strong>{{ works.summary }}</dd>
+            <hr>
+            {% endfor %}
+        </dl>
+        
+    </div>
+{% endblock %}

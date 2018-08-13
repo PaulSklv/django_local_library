@@ -1,0 +1,17 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+	<h1>Список авторов произведений:</h1>
+	<h6><a href="{% url 'author_create' %}">Создать запись об авторе</a></h6>
+	{% if author_list %}
+	<ul>
+		{% for author in author_list %}
+		<li>
+			<a href="{{ author.get_absolute_url }}">{{ author.full_name }}</a> 
+		</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+		<p>В библиотеке не осталось книг.</p>
+	{% endif %}
+{% endblock %}
